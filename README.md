@@ -50,7 +50,22 @@ O serviço escuta requisições HTTP POST de um gateway de pagamento no endpoint
    python3 test_webhook.py
    ```
 
-O script executará uma série de testes contra o serviço em execução e imprimirá os resultados. Uma implementação bem-sucedida passará em todos os 6 testes.
+O script executará uma série de testes contra o serviço em execução e imprimirá os resultados. Uma implementação bem-sucedida passará em todos os 6 testes:
+
+```
+✅ Confirmação recebida: {'transaction_id': 'abc123'}
+1. Webhook test ok: successful!
+2. Webhook test ok: transação duplicada!
+❌ Cancelamento recebido: {'transaction_id': 'abc123a'}
+3. Webhook test ok: amount incorreto!
+4. Webhook test ok: Token Invalido!
+5. Webhook test ok: Payload Invalido!
+❌ Cancelamento recebido: {'transaction_id': 'abc123abc'}
+6. Webhook test ok: Campos ausentes!
+6/6 tests completed.
+Confirmações recebidas: ['abc123']
+Cancelamentos recebidos: ['abc123a', 'abc123abc']
+```
 
 ## Estrutura do Projeto
 
